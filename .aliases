@@ -1,0 +1,40 @@
+# Aliases
+## File system
+if command -v eza &> /dev/null; then
+  alias ls='eza -lh --group-directories-first --icons=auto'
+  alias lsa='ls -a'
+  alias lt='eza --tree --level=2 --long --icons --git'
+  alias lta='lt -a'
+fi
+
+alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
+alias cwd='cd $(find ${HOME}/Documents/GitHub/* -maxdepth 1 -type d | fzf)'
+
+open() {
+  xdg-open "$@" >/dev/null 2>&1 &
+}
+
+# Directories
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# Git
+alias gcb='git checkout -b'
+alias gco='git checkout'
+alias gpushremote='git push --set-upstream origin $(git branch --show-current)'
+alias gpush='git push'
+alias gpull='git pull --rebase'
+alias gst='git status'
+alias ga='git add -p'
+alias gaa='git add .'
+
+# Terraform
+alias tffmt='terraform fmt -recursive'
+alias tfval="terraform validate && tflint && tffmt"
+alias tfplan='tfval && terraform plan'
+alias tfapply='tfval && terraform apply'
+
+# Trivy
+alias tfsscan='trivy scan2html fs --scanners vuln,secret,misconfig --scan2html-flags --output interactive_report.html'
+alias tiscan='trivy scan2html image --scanners vuln,secret,misconfig --scan2html-flags --output interactive_report.html'
