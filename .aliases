@@ -38,3 +38,6 @@ alias tfapply='tfval && terraform apply'
 # Trivy
 alias tfsscan='trivy scan2html fs --scanners vuln,secret,misconfig --scan2html-flags --output interactive_report.html'
 alias tiscan='trivy scan2html image --scanners vuln,secret,misconfig --scan2html-flags --output interactive_report.html'
+
+# charmbracelet
+alias vhs='docker run --rm -v $PWD:/vhs ghcr.io/charmbracelet/vhs'
